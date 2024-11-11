@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.common.user.model">
+	<class entity-name="roleModuleRightsModelEntity" name="RoleModuleRightsModel" table="tblrolemoduleright" dynamic-update="true" dynamic-insert="true">
+   		<composite-id>
+   			<key-property name="roleId" column="fkroleid" type="java.lang.Long"></key-property>
+   			<key-property name="moduleId" column="fkmoduleid" type="java.lang.Long"></key-property>
+   			<key-property name="rightsId" column="fkrightsid" type="java.lang.Long"></key-property>
+   		</composite-id>   		
+	</class>
+</hibernate-mapping>

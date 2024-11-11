@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.common.location.model">
+	<class entity-name="cityModel" name="CityModel" table="tblcity" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkId" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="txtName" type="java.lang.String" not-null="true" length="100" />
+		<many-to-one name="stateModel" entity-name="stateModel" column="fkStateId" fetch="join" not-null="true" lazy="false" />
+	</class>
+	
+	<class entity-name="lightCityModel" name="CityModel" table="tblcity" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkId" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="txtName" type="java.lang.String" not-null="true" length="100" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.machine.model">
+	<class entity-name="transactionLogModel" name="TransactionLogModel" table="tbltransactionlog" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+	
+		<!--<many-to-one name="transactionModel" entity-name="transactionModel" column="fktransactionid" lazy="false" fetch="join" not-null="true"/>-->
+		<many-to-one name="transactionModel" entity-name="extraLightTransactionModel" column="fktransactionid" lazy="false" fetch="join" not-null="true"/>
+		<property name="material" column="enummaterial" type="java.lang.Integer" access="field" not-null="false" />
+		<property name="reason" column="txtreason" type="java.lang.String" not-null="false"/>
+		<property name="barcode" column="txtbarcode" type="java.lang.String" not-null="true"/>
+		<property name="status" column="enumstatus" type="java.lang.Integer" access="field" not-null="true" />
+		<property name="volumn" column="volumn" type="java.math.BigDecimal" not-null="false"/>
+		<property name="weight" column="weight" type="java.math.BigDecimal" not-null="false"/>
+		<many-to-one name="imageModel" entity-name="fileModel" column="fkimageid" lazy="false" fetch="join" not-null="false"/>		
+	</class>	
+</hibernate-mapping>

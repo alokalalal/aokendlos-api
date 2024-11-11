@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.common.notification.model">
+    <class entity-name="notificationModel" name="NotificationModel" table="tblnotification" batch-size="50" dynamic-update="true" dynamic-insert="true">
+        <id name="id" column="pkid" type="java.lang.Long">
+			<generator class="assigned" />
+		</id>
+	    <property name="name" column="txtname" type="java.lang.String" not-null="true" length="100"/>
+        <property name="email" column="isemail" type="boolean" />
+        <property name="push" column="ispush" type="boolean" />
+    </class>
+</hibernate-mapping>

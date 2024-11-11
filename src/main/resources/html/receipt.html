@@ -1,0 +1,148 @@
+<!doctype html>
+<html>
+<head>
+    <style>
+        @page {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <table style="margin: 0;background-color: #ffffff;font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;padding: 0 6px 0 6px;box-sizing: border-box;" width="260" cellspacing="0" cellpadding="0" border="0" align="center" bgcolor="#ffffff">
+        <tbody>
+            <tr>
+                <td style="height: 1px;"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="text-align: center;padding: 0;box-sizing: border-box;margin: 0 auto;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>                      
+                            <tr>
+                                <td>
+                                    <p style="margin: 0 0 3px 0px;"> <span style="margin: 0;font-size: 11px;font-weight: bold;line-height: normal;font-family: sans-serif;text-transform: uppercase;">Asofta Advance Recycling</span></p>
+                                   <p style="margin: 0;">
+                                    	<span style="margin: 0;font-size: 10px;font-weight: bold;line-height: normal;font-family: sans-serif;">Deposit Receipt 
+                                   <!-- <img src="http://www.project.intentlabs.com/EmailTemplates/endlos-receipt/asofta.png" style="width: auto;vertical-align: middle;margin-left: 8px;width: 36px;">-->
+                                   		</span>
+                                   </p>                                                        
+                                </td>
+                            </tr>                                         
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 8px;"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="text-align: center;padding: 0;box-sizing: border-box;margin: 0 auto;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>                      
+                            <tr>
+                                <td>
+                                    <p style="margin: 0;"> <span style="margin: 0;font-size: 11px;line-height: normal;font-family: sans-serif;">Issued from: ${machineId}</span></p>                                                          
+                                </td>
+                            </tr>                                         
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 7px;"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="margin: 0px;text-align: center;" width="248" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>
+                            <tr>  
+                                <td style="width: 124px;">
+                                    <p style="margin: 0;"> <span style="margin: 0;font-size: 11px;line-height: normal;font-family: sans-serif;">Date: ${date}</span></p>                                                          
+                                </td>
+                                <td style="width: 124px;">
+                                    <p style="margin: 0;"> <span style="margin: 0;font-size: 11px;line-height: normal;font-family: sans-serif;">Time: ${time}</span></p>                                                          
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 8px;"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="margin: 0px;text-align: center;border-collapse: collapse;" width="100%" cellspacing="0" cellpadding="0" border="1">
+                        <tbody>
+                            <tr>
+                                <td style="padding: 0 6px; box-sizing: border-box;"><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">Container</span></td>
+                                <td style="padding: 0 6px; box-sizing: border-box;"><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">Qty</span></td>
+                                <td style="padding: 0 6px; box-sizing: border-box;"><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">Net Amount</span></td>
+                            </tr>
+                            <tr>
+                                <td><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">Plastic</span></td>
+                                <td><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">${patBottleCount}</span></td>                            
+                                <td><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">${patBottleValue} &#8362;</span></td>
+                            </tr>
+                            <tr>
+                                <td><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">Metal</span></td>
+                                <td><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">${aluBottleCount}</span></td>                            
+                                <td><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">${aluBottleValue} &#8362;</span></td>
+                            </tr>
+                            <tr>
+                                <td><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">Glass</span></td>
+                                <td><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">${glassBottleCount}</span></td>                            
+                                <td><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">${glassBottleValue} &#8362;</span></td>
+                            </tr>
+                            <tr>
+                                <td colspan="2"><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">Total</span></td>
+                                <td><span style="margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">${totalValue} &#8362;</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 8px;"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="text-align: center;padding: 0;box-sizing: border-box;margin: 0 auto;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>                      
+                            <tr>
+                                <td>    
+                                    <p style="margin: 0; text-align: center;">  
+                                        <span style="display: inline-block;text-align: center;">
+                                            <img src="${path}" style="width: 180px;max-width: 100%;">                  
+                                        </span>
+                                    </p>          
+                                    <p style="margin: 0; text-align: center;">  
+                                        <span style="display: inline-block;text-align: center; margin: 0;font-size: 11px;line-height: 24px;font-family: sans-serif;">
+                                            ${barcode}               
+                                        </span>
+                                    </p>                                                
+                                </td>
+                            </tr>                                         
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr>
+                <td style="height: 4px;"></td>
+            </tr>
+            <tr>
+                <td>
+                    <table style="text-align: center;padding: 0;box-sizing: border-box;margin: 0 auto;" width="100%" cellspacing="0" cellpadding="0" border="0">
+                        <tbody>                      
+                            <tr>
+                                <td>
+                                    <p style="margin: 0;"><span style="margin: 0;font-size: 11px;line-height: normal;font-family: sans-serif;">Thank you for your contribution.</span></p>                                                          
+                                </td>
+                            </tr>                                         
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

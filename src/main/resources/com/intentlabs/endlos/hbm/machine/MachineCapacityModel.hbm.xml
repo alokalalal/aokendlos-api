@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.intentlabs.endlos.machine.model">
+	<class entity-name="machineCapacityModel" name="MachineCapacityModel" table="tblmachinecapacity" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<many-to-one name="machineModel" entity-name="machineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>	
+		<property name="plasticCapacity" column="plasticcapacity" type="java.lang.Long" not-null="false" />
+		<property name="glassCapacity" column="glasscapacity" type="java.lang.Long" not-null="false" />
+		<property name="aluminiumnCapacity" column="aluminiumcapacity" type="java.lang.Long" not-null="false" />
+		<property name="printCapacity" column="printcapacity" type="java.lang.Long" not-null="false" />
+		<property name="maxTransaction" column="maxtransaction" type="java.lang.Long" not-null="false" />
+		<property name="maxAutoCleaning" column="maxautocleaning" type="java.lang.Long" not-null="false" />
+		<property name="createDate" column="createdate" type="java.lang.Long" not-null="true" />
+	</class>
+</hibernate-mapping>

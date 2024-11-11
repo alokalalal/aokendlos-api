@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.common.user.model">
+	<class entity-name="rightsModel" name="RightsModel" table="tblrights" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="assigned" />
+		</id>
+		<property name="name" column="txtname" type="java.lang.String" not-null="true" length="100" />
+	</class>
+</hibernate-mapping>

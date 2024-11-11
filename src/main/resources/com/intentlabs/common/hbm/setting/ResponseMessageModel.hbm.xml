@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+	
+<hibernate-mapping package="com.intentlabs.common.setting.model">
+	<class entity-name="responseMessageModel" name="ResponseMessageModel" table="tblresponsemessage" batch-size="50" dynamic-update="true" dynamic-insert="true">
+		<composite-id>
+   			<key-property name="code" column="enumcode" type="java.lang.Integer"></key-property>
+   			<key-property name="locale" column="enumlanguage" type="java.lang.String"></key-property>
+   		</composite-id> 
+		<property name="message" column="txtmessage" type="java.lang.String" length="1000" not-null="true" />
+	</class>
+</hibernate-mapping>

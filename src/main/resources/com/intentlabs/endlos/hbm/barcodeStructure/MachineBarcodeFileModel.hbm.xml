@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.barcodemachine.model">
+	<class entity-name="machineBarcodeFileModel" name="MachineBarcodeFileModel" table="tblbarcodemachinefile" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="noOfMachineAssigned" column="noofmachineassigned" type="java.lang.Long" not-null="false"/>
+		<property name="totalNoOfBarcodes" column="totalnoofbarcodes" type="java.lang.Long" not-null="false"/>
+		<property name="plastic" column="plastic" type="java.lang.Long" not-null="false"/>
+		<property name="glass" column="glass" type="java.lang.Long" not-null="false"/>
+		<property name="alluminium" column="alluminium" type="java.lang.Long" not-null="false"/>
+		<property name="fileStatus" column="txtfileStatus" type="java.lang.String" not-null="false" length="50" />
+		<property name="barcodeFileName" column="txtbarcodefilename" type="java.lang.String" not-null="true" length="500" />
+		<!--<many-to-one name="fileModel" entity-name="fileModel" column="fkfilemodelid" lazy="false" fetch="join" not-null="false" cascade="all"/>-->
+		<!--<bag name="machineBarcodeItemModels" lazy="false" cascade="all" inverse="false" fetch="select">
+			<key column="fkbarcodefileid" />
+			<one-to-many entity-name="machineBarcodeItemModel" />
+		</bag>-->
+	</class>
+
+	<class entity-name="superLightMachineBarcodeFileModel" name="MachineBarcodeFileModel" table="tblbarcodemachinefile" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="barcodeFileName" column="txtbarcodefilename" type="java.lang.String" not-null="true" length="500" />
+	</class>
+</hibernate-mapping>

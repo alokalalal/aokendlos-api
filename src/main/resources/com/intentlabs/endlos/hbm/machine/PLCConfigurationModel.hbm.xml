@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.intentlabs.endlos.machine.model">
+	<class entity-name="plcConfigurationModel" name="PLCConfigurationModel" table="tblplcconfiguration" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<many-to-one name="machineModel" entity-name="machineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>	
+		<property name="plcAddressCDoorFrequency" column="plcaddresscdoorfrequency" type="java.lang.Long" not-null="true" />
+		<property name="plcAddressFcFrequency" column="plcaddressfcfrequency" type="java.lang.Long" not-null="true" />
+		<property name="barcodeScannerResponseWait" column="barcodescannerresponsewait" type="java.lang.Long" not-null="true" />
+		<property name="plcAddressPlasticShredderCurrent" column="plcaddressplasticshreddercurrent" type="java.lang.Long" not-null="true" />
+		<property name="plcAddressGlassShredderCurrent" column="plcaddressglassshreddercurrent" type="java.lang.Long" not-null="true" />
+		<property name="plcAddressAluminiumShredderCurrent" column="plcaddressaluminiumshreddercurrent" type="java.lang.Long" not-null="true" />
+		<property name="plcAddressBcFrequency" column="plcaddressbcfrequency" type="java.lang.Long" not-null="true" />
+		<property name="objectDetectFirstResponseWait" column="objectdetectfirstresponsewait" type="java.lang.Long" not-null="true" />
+		<property name="plcAddressSlidingConveyorFrequency" column="plcaddressslidingconveyorfrequency" type="java.lang.Long" not-null="true" />
+		<property name="plcIpAddress" column="plcipaddress" type="java.lang.String" not-null="true" />
+
+		<property name="createDate" column="createdate" type="java.lang.Long" not-null="true" />
+	</class>
+</hibernate-mapping>

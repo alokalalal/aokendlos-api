@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.machine.model">
+	<class entity-name="printLogModel" name="PrintLogModel" table="tblprintlog" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="resetDate" column="resetdate" type="java.lang.Long" not-null="false"/>
+		<property name="printCount" column="printcount" type="java.lang.Long" not-null="true"/>
+		<property name="createDate" column="createdate" type="java.lang.Long" not-null="false"/>
+		<many-to-one name="machineModel" entity-name="machineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>	
+		<many-to-one name="locationModel" entity-name="locationModel" column="fklocationid" lazy="false" fetch="join" not-null="true"/>
+
+	</class>	
+</hibernate-mapping>

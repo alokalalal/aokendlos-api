@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.machine.model">
+	<class entity-name="machineModel" name="MachineModel" table="tblmachine" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<version name="lockVersion" column="lockversion" type="long" />
+		
+		<property name="machineId" column="txtmachineid" type="java.lang.String" not-null="true" length="20" />
+		<property name="uniqueToken" column="txtuniquetoken" type="java.lang.String" length="8" not-null="false" />	
+		<many-to-one name="customerModel" entity-name="customerModel" column="fkcustomerid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="locationModel" entity-name="locationModel" column="fklocationid" lazy="false" fetch="join" not-null="false"/>
+		<property name="machineActivityStatus" column="enummachineactivitystatus" type="java.lang.Integer" access="field" not-null="true" />
+		<property name="machineDevelopmentStatus" column="enummachinedevelopmentstatus" type="java.lang.Integer" access="field" not-null="true" />
+		<property name="mpin" column="txtmpin" type="java.lang.String" not-null="false" length="6" />
+		<property name="patBottlePercentage" column="patbottlepercentage" type="java.math.BigDecimal" not-null="false"/>
+		<property name="aluBottlePercentage" column="alubottlepercentage" type="java.math.BigDecimal" not-null="false"/>
+		<property name="glassBottlePercentage" column="glassbottlepercentage" type="java.math.BigDecimal" not-null="false"/>
+		<property name="branchMachineNumber" column="txtbranchmachinenumber" type="java.lang.String" not-null="false" length="2" />	
+		<many-to-one name="barcodeTemplateModel" entity-name="barcodeTemplateModel" column="fkbarcodetemplateid" lazy="false" fetch="join" not-null="false"/>	
+		<property name="binFullStatus" column="enumbinfullstatus" type="java.lang.Integer" access="field" not-null="true" />
+		<property name="barcodeTemplateChanged" column="isbarcodetemplateChanged" type="boolean" not-null="true"/>		
+		<property name="rejected" column="isrequestrejected" type="boolean" not-null="false"/>	
+		<property name="machineType" column="enummachinetype" type="java.lang.Integer" access="field" not-null="true" />
+	
+		<property name="patBottleCount" column="patbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="glassBottleCount" column="glassbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="aluBottleCount" column="alubottlecount" type="java.lang.Long" not-null="false"/>
+		<many-to-one name="machineCapacityModel" entity-name="machineCapacityModel" column="fkmachinecapacityid" lazy="false" fetch="join" />
+		<many-to-one name="mqttConfigurationModel" entity-name="mqttConfigurationModel" column="fkmqttconfigurationid" lazy="false" fetch="join" />
+		<many-to-one name="plcConfigurationModel" entity-name="plcConfigurationModel" column="fkplcconfigurationid" lazy="false" fetch="join" />
+		<property name="passwordChanged" column="ispasswordchanged" type="boolean" not-null="true"/>
+		<property name="password" column="password" type="java.lang.String" not-null="false" length="20" />
+		<property name="barcodeChanged" column="isbarcodeChanged" type="boolean" not-null="true"/>		
+		<property name="logoChanged" column="islogochanged" type="boolean" not-null="true"/>		
+		<property name="capacityChanged" column="iscapacitychanged" type="boolean" not-null="true"/>
+
+		<set name="acceptedMaterials" cascade="none" table="tblmachinematerials" lazy="false" fetch="join" batch-size="20">
+			<key>
+				<column name="fkmachineid" not-null="true" />
+			</key>
+			<element type="java.lang.Integer" column="material" />
+		</set>
+		<!-- COMON HBM FIELDS STARTS -->
+		<property name="createDate" column="datecreate" type="java.lang.Long" not-null="true"/>
+		<many-to-one name="createBy" entity-name="extraExtraLightUserModel" column="fkcreateby" lazy="false" fetch="join" />
+		<property name="updateDate" column="dateupdate" type="java.lang.Long" not-null="false"/>
+		<many-to-one name="updateBy" entity-name="extraExtraLightUserModel" column="fkupdateby" lazy="false" fetch="join" />
+		<property name="active" column="isactive" type="boolean" not-null="true"/>
+		<property name="activationDate" column="dateactchange" type="java.lang.Long" not-null="false"/>
+		<many-to-one name="activationChangeBy" entity-name="extraExtraLightUserModel" column="fkactchangeby" lazy="false" fetch="join" />
+		<!-- COMON HBM FIELDS ENDS -->
+		<many-to-one name="machineBarcodeFileModel" entity-name="machineBarcodeFileModel" column="fkmachineBarcodefilemodelid" lazy="false" fetch="join" not-null="false"/>
+	</class>
+	
+	<class entity-name="lightMachineModel" name="MachineModel" table="tblmachine" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<version name="lockVersion" column="lockversion" type="long" />
+		<property name="machineId" column="txtmachineid" type="java.lang.String" not-null="true" length="20" />
+		<many-to-one name="customerModel" entity-name="customerModel" column="fkcustomerid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="locationModel" entity-name="extraLightLocationModel" column="fklocationid" lazy="false" fetch="join" not-null="false"/>
+		<property name="binFullStatus" column="enumbinfullstatus" type="java.lang.Integer" access="field" not-null="true" />
+		<property name="machineActivityStatus" column="enummachineactivitystatus" type="java.lang.Integer" access="field" not-null="true" />
+		<property name="active" column="isactive" type="boolean" not-null="true"/>
+	</class>
+	<class entity-name="extraLightMachineModel" name="MachineModel" table="tblmachine" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<version name="lockVersion" column="lockversion" type="long" />
+		<property name="machineId" column="txtmachineid" type="java.lang.String" not-null="true" length="20" />
+		<many-to-one name="customerModel" entity-name="customerModel" column="fkcustomerid" lazy="false" fetch="join" not-null="false"/>
+		<property name="active" column="isactive" type="boolean" not-null="true"/>
+	</class>
+
+	<class entity-name="superLightMachineModel" name="MachineModel" table="tblmachine" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<!--<version name="lockVersion" column="lockversion" type="long" />-->
+		<property name="machineId" column="txtmachineid" type="java.lang.String" not-null="true" length="20" />
+		<many-to-one name="customerModel" entity-name="superLightCustomerModel" column="fkcustomerid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="locationModel" entity-name="superLightLocationModel" column="fklocationid" lazy="false" fetch="join" not-null="false"/>
+
+		<property name="patBottlePercentage" column="patbottlepercentage" type="java.math.BigDecimal" not-null="false"/>
+		<property name="aluBottlePercentage" column="alubottlepercentage" type="java.math.BigDecimal" not-null="false"/>
+		<property name="glassBottlePercentage" column="glassbottlepercentage" type="java.math.BigDecimal" not-null="false"/>
+		<property name="branchMachineNumber" column="txtbranchmachinenumber" type="java.lang.String" not-null="false" length="2" />
+		<property name="machineType" column="enummachinetype" type="java.lang.Integer" access="field" not-null="true" />
+
+		<many-to-one name="machineBarcodeFileModel" entity-name="superLightMachineBarcodeFileModel" column="fkmachineBarcodefilemodelid" lazy="false" fetch="join" not-null="false"/>
+
+		<many-to-one name="barcodeTemplateModel" entity-name="superLightBarcodeTemplateModel" column="fkbarcodetemplateid" lazy="false" fetch="join" not-null="false"/>
+
+		<property name="binFullStatus" column="enumbinfullstatus" type="java.lang.Integer" access="field" not-null="true" />
+		<property name="machineActivityStatus" column="enummachineactivitystatus" type="java.lang.Integer" access="field" not-null="true" />
+
+		<property name="createDate" column="datecreate" type="java.lang.Long" not-null="true"/>
+		<property name="active" column="isactive" type="boolean" not-null="true"/>
+		<set name="acceptedMaterials" cascade="none" table="tblmachinematerials" lazy="false" fetch="join" batch-size="20">
+			<key>
+				<column name="fkmachineid" not-null="true" />
+			</key>
+			<element type="java.lang.Integer" column="material" />
+		</set>
+	</class>
+
+	<class entity-name="extraSmallMachineModel" name="MachineModel" table="tblmachine" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="machineId" column="txtmachineid" type="java.lang.String" not-null="true" length="20" />
+		<property name="branchMachineNumber" column="txtbranchmachinenumber" type="java.lang.String" not-null="false" length="2" />
+		<many-to-one name="customerModel" entity-name="superLightCustomerModel" column="fkcustomerid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="locationModel" entity-name="superLightLocationModel" column="fklocationid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="barcodeTemplateModel" entity-name="superLightBarcodeTemplateModel" column="fkbarcodetemplateid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="machineBarcodeFileModel" entity-name="superLightMachineBarcodeFileModel" column="fkmachineBarcodefilemodelid" lazy="false" fetch="join" not-null="false"/>
+		<property name="createDate" column="datecreate" type="java.lang.Long" not-null="true"/>
+		<property name="password" column="password" type="java.lang.String" not-null="false" length="20" />
+		<property name="active" column="isactive" type="boolean" not-null="true"/>
+	</class>
+
+	<class entity-name="extraSmallLightMachineModel" name="MachineModel" table="tblmachine" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="machineId" column="txtmachineid" type="java.lang.String" not-null="true" length="20" />
+		<many-to-one name="locationModel" entity-name="superLightLocationModel" column="fklocationid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="customerModel" entity-name="superLightCustomerModel" column="fkcustomerid" lazy="false" fetch="join" not-null="false"/>
+		<property name="active" column="isactive" type="boolean" not-null="true"/>
+	</class>
+
+	<class entity-name="smallLightMachineModel" name="MachineModel" table="tblmachine" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<!--<property name="machineId" column="txtmachineid" type="java.lang.String" not-null="true" length="20" />-->
+		<!--<many-to-one name="locationModel" entity-name="smallLightLocationModel" column="fklocationid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="customerModel" entity-name="superLightCustomerModel" column="fkcustomerid" lazy="false" fetch="join" not-null="false"/>-->
+	</class>
+
+	<class entity-name="lightMachineModelForAllMachineState" name="MachineModel" table="tblmachine" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="machineId" column="txtmachineid" type="java.lang.String" not-null="true" length="20" />
+		<property name="machineType" column="enummachinetype" type="java.lang.Integer" access="field" not-null="true" />
+
+		<many-to-one name="locationModel" entity-name="lightLocationModelForAllMachineState" column="fklocationid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="customerModel" entity-name="superLightCustomerModel" column="fkcustomerid" lazy="false" fetch="join" not-null="false"/>
+
+		<property name="patBottlePercentage" column="patbottlepercentage" type="java.math.BigDecimal" not-null="false"/>
+		<property name="aluBottlePercentage" column="alubottlepercentage" type="java.math.BigDecimal" not-null="false"/>
+		<property name="glassBottlePercentage" column="glassbottlepercentage" type="java.math.BigDecimal" not-null="false"/>
+		<property name="patBottleCount" column="patbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="glassBottleCount" column="glassbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="aluBottleCount" column="alubottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="active" column="isactive" type="boolean" not-null="true"/>
+	</class>
+
+</hibernate-mapping>

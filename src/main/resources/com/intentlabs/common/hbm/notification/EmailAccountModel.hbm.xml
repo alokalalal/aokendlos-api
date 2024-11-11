@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.common.notification.model">
+    <class entity-name="emailAccount" name="EmailAccountModel" table="tblemailaccount" batch-size="50" dynamic-update="true" dynamic-insert="true">
+        <id name="id" column="pkId" type="java.lang.Long" length="10">
+            <generator class="identity"/>
+        </id>
+        <version name="lockVersion" column="lockversion" type="long" />
+        <property name="name" column="txtname" type="java.lang.String" not-null="true" unique="true" length="50"/>
+        <property name="host" column="txthost" type="java.lang.String" not-null="true" length="100"/>
+        <property name="port" column="intport" type="java.lang.Long"/>
+        <property name="username" column="txtusername" type="java.lang.String" not-null="true" unique="true" length="100"/>        
+        <property name="password" column="txtpassword" type="java.lang.String" not-null="true" length="100"/>
+        <property name="replyToEmail" column="txtreplytoemail" type="java.lang.String" not-null="true" length="100"/>
+        <property name="emailFrom" column="txtemailfrom" type="java.lang.String" not-null="true" length="100"/>
+       	<property name="ratePerHour" column="intrateperhour" type="java.lang.Long" not-null="false" length="6"/>
+        <property name="updateRatePerHour" column="intupdaterateperhour" type="java.lang.Long" not-null="false" length="6"/>
+        <property name="ratePerDay" column="intrateperday" type="java.lang.Long" not-null="false" length="15"/>
+        <property name="updateRatePerDay" column="intupdaterateperday" type="java.lang.Long" not-null="false" length="15"/>
+        <property name="authenticationMethod" column="enumauthmethod" type="int" access="field"/>
+        <property name="authenticationSecurity" column="enumauthsecurity" type="int" access="field"/>
+        <property name="timeOut" column="inttimeout" type="java.lang.Long"/> 
+        <!-- COMON HBM FIELDS STARTS -->
+		<property name="archive" column="isarchive" type="boolean" />
+		<property name="archiveDate" column="datearchive" type="java.lang.Long" />
+		<many-to-one name="archiveBy" entity-name="extraExtraLightUserModel" column="fkarchiveby" lazy="false" fetch="join" />
+		<property name="active" column="isactive" type="boolean" />
+		<property name="activationDate" column="dateactchange" type="java.lang.Long" />
+		<many-to-one name="activationChangeBy" entity-name="extraExtraLightUserModel" column="fkactchangeby" lazy="false" fetch="join" />
+		<property name="updateDate" column="dateupdate" type="java.lang.Long" />
+		<many-to-one name="updateBy" entity-name="extraExtraLightUserModel" column="fkupdateby" lazy="false" fetch="join" />
+		<property name="createDate" column="datecreate" type="java.lang.Long" />
+		<many-to-one name="createBy" entity-name="extraExtraLightUserModel" column="fkcreateby" lazy="false" fetch="join" />
+		<!-- COMON HBM FIELDS ENDS -->
+    </class>
+    
+    <class entity-name="lightEmailAccount" name="EmailAccountModel" table="tblemailaccount" batch-size="50" dynamic-update="true" dynamic-insert="true">
+        <id name="id" column="pkId" type="java.lang.Long" length="10">
+            <generator class="identity"/>
+        </id>
+         <version name="lockVersion" column="lockversion" type="long" />
+        <property name="name" column="txtname" type="java.lang.String" not-null="true" unique="true" length="50"/>
+        <property name="host" column="txthost" type="java.lang.String" not-null="true" length="100"/>
+        <property name="port" column="intport" type="java.lang.Long"/>
+        <property name="username" column="txtusername" type="java.lang.String" not-null="true" unique="true" length="100"/>        
+        <property name="password" column="txtpassword" type="java.lang.String" not-null="true" length="100"/>
+        <property name="replyToEmail" column="txtreplytoemail" type="java.lang.String" not-null="true" length="100"/>
+        <property name="emailFrom" column="txtemailfrom" type="java.lang.String" not-null="true" length="100"/>
+       	<property name="ratePerHour" column="intrateperhour" type="java.lang.Long" not-null="false" length="6"/>
+        <property name="updateRatePerHour" column="intupdaterateperhour" type="java.lang.Long" not-null="false" length="6"/>
+        <property name="ratePerDay" column="intrateperday" type="java.lang.Long" not-null="false" length="15"/>
+        <property name="updateRatePerDay" column="intupdaterateperday" type="java.lang.Long" not-null="false" length="15"/>
+        <property name="authenticationMethod" column="enumauthmethod" type="int" access="field"/>
+        <property name="authenticationSecurity" column="enumauthsecurity" type="int" access="field"/>
+        <property name="timeOut" column="inttimeout" type="java.lang.Long"/>  
+        <!-- COMON HBM FIELDS STARTS -->
+		<property name="archive" column="isarchive" type="boolean" />
+		<property name="active" column="isactive" type="boolean" />
+    </class>
+</hibernate-mapping>

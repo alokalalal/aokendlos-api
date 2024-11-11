@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.common.notification.model">
+    <class entity-name="transactionalEmailModel" name="TransactionalEmailModel" table="tbltransactionemail" batch-size="50" dynamic-update="true" dynamic-insert="true">
+        <id name="id" column="pkId" type="java.lang.Long" length="10">
+            <generator class="identity"/>
+        </id>
+        <version name="lockVersion" column="lockversion" type="long" />
+		<property name="emailAccountId" column="fkemailaccountid" type="java.lang.Long" not-null="true"/>
+	    <property name="emailTo" column="txtemailto" type="java.lang.String" not-null="true"/>
+        <property name="emailCc" column="txtemailcc" type="java.lang.String"/>
+        <property name="emailBcc" column="txtemailbcc" type="java.lang.String"/>
+        <property name="subject" column="txtsubject" type="java.lang.String" not-null="true" length="1000"/>        
+        <property name="body" column="txtbody" type="java.lang.String"/>
+        <property name="status" column="enumstatus" type="int" access="field" not-null="true" length="1"/>        
+        <property name="retryCount" column="numberretrycount" type="java.lang.Long" length="2"/>    
+        <property name="attachmentPath" column="txtattachmentpath" type="java.lang.String"/>
+        <property name="txtError" column="txterror" type="java.lang.String"/>
+        <property name="dateSend" column="datesend" type="java.lang.Long" update="false"/>
+        <property name="dateSent" column="datesent" type="java.lang.Long" />
+    </class>
+</hibernate-mapping>

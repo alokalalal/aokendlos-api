@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.customer.model">
+	<class entity-name="customerModel" name="CustomerModel" table="tblcustomer" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<version name="lockVersion" column="lockversion" type="long" />
+		<property name="name" column="txtname" type="java.lang.String" not-null="true" length="500" />	
+		<many-to-one name="logo" entity-name="lightFileModel" column="fklogoid" lazy="false" fetch="join" not-null="false" />	
+		
+		<!-- COMON HBM FIELDS STARTS -->
+		<property name="createDate" column="datecreate" type="java.lang.Long" not-null="true"/>
+		<many-to-one name="createBy" entity-name="extraExtraLightUserModel" column="fkcreateby" lazy="false" fetch="join" />
+		<property name="updateDate" column="dateupdate" type="java.lang.Long" not-null="false"/>
+		<many-to-one name="updateBy" entity-name="extraExtraLightUserModel" column="fkupdateby" lazy="false" fetch="join" />
+		<property name="active" column="isactive" type="boolean" not-null="true"/>
+		<property name="activationDate" column="dateactchange" type="java.lang.Long" not-null="false"/>
+		<many-to-one name="activationChangeBy" entity-name="extraExtraLightUserModel" column="fkactchangeby" lazy="false" fetch="join" />
+		<!-- COMON HBM FIELDS ENDS -->
+	</class>
+
+	<class entity-name="superLightCustomerModel" name="CustomerModel" table="tblcustomer" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="txtname" type="java.lang.String" not-null="true" length="500" />
+	</class>
+</hibernate-mapping>

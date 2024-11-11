@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.machine.model">
+	<class entity-name="errorLogModel" name="ErrorLogModel" table="tblerrorlog" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		
+		<many-to-one name="errorModel" entity-name="errorModel" column="fkerrorid" lazy="false" fetch="join" not-null="false"/>	
+		<many-to-one name="machineModel" entity-name="machineModel" column="fkmachineid" lazy="false" fetch="join" not-null="false"/>	
+		<property name="machineActivityStatus" column="enummachineactivitystatus" type="java.lang.Integer" access="field" not-null="true" />
+		<property name="createDate" column="createdate" type="java.lang.Long" not-null="false"/>
+		
+	</class>	
+</hibernate-mapping>

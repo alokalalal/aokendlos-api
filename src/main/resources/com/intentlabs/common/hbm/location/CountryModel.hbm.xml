@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.common.location.model">
+	<class entity-name="countryModel" name="CountryModel" table="tblcountry" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkId" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="txtname" type="java.lang.String" not-null="true" length="150" />
+		<set name="states" lazy="false" cascade="all" inverse="true" fetch="join" order-by="name">
+            <key column="fkCountryId" />
+            <one-to-many entity-name="lightStateModel"/>
+        </set>
+	</class>
+	
+	<class entity-name="lightCountryModel" name="CountryModel" table="tblcountry" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkId" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="txtname" type="java.lang.String" not-null="true" length="150" />
+	</class>
+</hibernate-mapping>

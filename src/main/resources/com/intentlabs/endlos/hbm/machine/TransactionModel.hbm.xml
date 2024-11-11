@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.machine.model">
+	<class entity-name="transactionModel" name="TransactionModel" table="tbltransaction" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		
+		<property name="transactionId" column="txttransactionid" type="java.lang.String" not-null="true"/>
+		<property name="patBottleCount" column="patbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="aluBottleCount" column="alubottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="glassBottleCount" column="glassbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="patBottleValue" column="patbottlevalue" type="java.math.BigDecimal" not-null="false"/>
+		<property name="aluBottleValue" column="alubottlevalue" type="java.math.BigDecimal" not-null="false"/>
+		<property name="glassBottleValue" column="glassbottlevalue" type="java.math.BigDecimal" not-null="false"/>
+		<property name="totalValue" column="totalvalue" type="java.math.BigDecimal" not-null="false"/>
+		<property name="dateStart" column="datestart" type="java.lang.Long" not-null="false"/>
+		<property name="dateUpdate" column="dateupdate" type="java.lang.Long" not-null="false"/>
+		<property name="dateEnd" column="dateend" type="java.lang.Long" not-null="false"/>
+		<property name="barcode" column="txtbarcode" type="java.lang.String" not-null="true"/>
+		<!--<many-to-one name="machineModel" entity-name="machineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>-->
+		<!--<many-to-one name="locationModel" entity-name="locationModel" column="fklocationid" lazy="false" fetch="join" not-null="true"/>-->
+		<many-to-one name="machineModel" entity-name="extraSmallLightMachineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="barcodeFileModel" entity-name="lightFileModel" column="fkbarcodefileid" lazy="false" fetch="join" not-null="false" />
+		<property name="offline" column="isoffline" type="boolean" not-null="true"/>
+		<many-to-one name="locationModel" entity-name="extraLightLocationModel" column="fklocationid" lazy="false" fetch="join" not-null="true"/>
+		<property name="fetch" column="isfetch" type="boolean" not-null="true"/>		
+		<property name="weight" column="weight" type="java.math.BigDecimal" not-null="false"/>
+
+	</class>
+
+	<class entity-name="extraLightTransactionModel" name="TransactionModel" table="tbltransaction" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="transactionId" column="txttransactionid" type="java.lang.String" not-null="true"/>
+		<property name="dateEnd" column="dateend" type="java.lang.Long" not-null="false"/>
+		<many-to-one name="machineModel" entity-name="extraSmallLightMachineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="locationModel" entity-name="extraLightLocationModel" column="fklocationid" lazy="false" fetch="join" not-null="true"/>
+	</class>
+
+	<class entity-name="lightTransactionModel" name="TransactionModel" table="tbltransaction" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="patBottleCount" column="patbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="aluBottleCount" column="alubottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="glassBottleCount" column="glassbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="totalValue" column="totalvalue" type="java.math.BigDecimal" not-null="false"/>
+		<property name="dateStart" column="datestart" type="java.lang.Long" not-null="false"/>
+		<property name="dateEnd" column="dateend" type="java.lang.Long" not-null="false"/>
+		<property name="barcode" column="txtbarcode" type="java.lang.String" not-null="true"/>
+		<many-to-one name="machineModel" entity-name="smallLightMachineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="locationModel" entity-name="smallLightLocationModel" column="fklocationid" lazy="false" fetch="join" not-null="false"/>
+		<property name="offline" column="isoffline" type="boolean" not-null="true"/>
+	</class>
+
+	<class entity-name="extraLightTransactionModelForAllMachineState" name="TransactionModel" table="tbltransaction" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<many-to-one name="machineModel" entity-name="smallLightMachineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>
+		<property name="dateEnd" column="dateend" type="java.lang.Long" not-null="false"/>
+	</class>
+
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.machine.model">
+	<class entity-name="machineLogModel" name="MachineLogModel" table="tblmachinelog" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="resetDate" column="resetdate" type="java.lang.Long" not-null="false"/>
+		<property name="materialType" column="enummaterial" type="java.lang.Integer" access="field" not-null="true" />
+		<property name="materialCount" column="materialcount" type="java.lang.Long" not-null="true"/>
+		<property name="createDate" column="createdate" type="java.lang.Long" not-null="false"/>
+		<!--<many-to-one name="machineModel" entity-name="machineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="locationModel" entity-name="locationModel" column="fklocationid" lazy="false" fetch="join" not-null="true"/>-->
+
+		<many-to-one name="machineModel" entity-name="extraSmallLightMachineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="locationModel" entity-name="extraLightLocationModel" column="fklocationid" lazy="false" fetch="join" not-null="true"/>
+		<property name="hardResetDate" column="hardresetdate" type="java.lang.Long" not-null="false" />
+		<property name="hardReset" column="ishardreset" type="boolean" not-null="false" />
+	</class>
+
+	<class entity-name="machineLogModelForAllMachineState" name="MachineLogModel" table="tblmachinelog" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<many-to-one name="machineModel" entity-name="smallLightMachineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>
+		<property name="materialType" column="enummaterial" type="java.lang.Integer" access="field" not-null="true" />
+		<property name="hardResetDate" column="hardresetdate" type="java.lang.Long" not-null="false" />
+		<property name="resetDate" column="resetdate" type="java.lang.Long" not-null="false"/>
+	</class>
+</hibernate-mapping>

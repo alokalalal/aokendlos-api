@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.common.location.model">
+	<class entity-name="stateModel" name="StateModel" table="tblstate" batch-size="50" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkId" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="txtname" type="java.lang.String" not-null="true" length="100" />
+		<many-to-one name="countryModel" column="fkcountryid" entity-name="lightCountryModel" lazy="false" fetch="join" />
+	</class>
+	
+	<class entity-name="lightStateModel" name="StateModel" table="tblstate" batch-size="50" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkId" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="txtname" type="java.lang.String" not-null="true" length="100" />
+	</class>
+	
+	<class entity-name="stateCityModel" name="StateModel" table="tblstate" batch-size="50" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkId" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="txtname" type="java.lang.String" not-null="true" length="100" />
+		<set name="cities" lazy="false" cascade="all" inverse="true" fetch="join" order-by="name">
+            		<key column="fkStateId" />
+           		<one-to-many entity-name="lightCityModel" />
+	        </set>
+	</class>
+</hibernate-mapping>

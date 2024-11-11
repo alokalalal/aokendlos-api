@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.changelocation.model">
+	<class entity-name="changeLocationModel" name="ChangeLocationModel" table="tblchangelocation" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+
+		<!--<many-to-one name="machineModel" entity-name="machineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="oldCustomerModel" entity-name="customerModel" column="fkoldcustomerid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="oldLocationModel" entity-name="locationModel" column="fkoldlocationid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="oldBarcodeTemplateModel" entity-name="barcodeTemplateModel" column="fkoldbarcodetemplateid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="customerModel" entity-name="customerModel" column="fkcustomerid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="locationModel" entity-name="locationModel" column="fklocationid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="barcodeTemplateModel" entity-name="barcodeTemplateModel" column="fkbarcodetemplateid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="oldMachineBarcodeFileModel" entity-name="machineBarcodeFileModel" column="fkoldmachinebarcodefileid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="machineBarcodeFileModel" entity-name="machineBarcodeFileModel" column="fkmachinebarcodefilemodelid" lazy="false" fetch="join" not-null="false"/>-->
+
+		<many-to-one name="machineModel" entity-name="extraSmallLightMachineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="oldCustomerModel" entity-name="superLightCustomerModel" column="fkoldcustomerid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="oldLocationModel" entity-name="extraLightLocationModel" column="fkoldlocationid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="oldBarcodeTemplateModel" entity-name="superLightBarcodeTemplateModel" column="fkoldbarcodetemplateid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="customerModel" entity-name="superLightCustomerModel" column="fkcustomerid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="locationModel" entity-name="extraLightLocationModel" column="fklocationid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="barcodeTemplateModel" entity-name="superLightBarcodeTemplateModel" column="fkbarcodetemplateid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="oldMachineBarcodeFileModel" entity-name="superLightMachineBarcodeFileModel" column="fkoldmachinebarcodefileid" lazy="false" fetch="join" not-null="false"/>
+		<many-to-one name="machineBarcodeFileModel" entity-name="superLightMachineBarcodeFileModel" column="fkmachinebarcodefilemodelid" lazy="false" fetch="join" not-null="false"/>
+
+		<property name="status" column="enumstatus" type="java.lang.Integer" access="field" not-null="false" />
+		<property name="oldBranchMachineNumber" column="oldbranchmachinenumber" type="java.lang.String" not-null="false" length="2" />
+		<property name="newBranchMachineNumber" column="newbranchmachinenumber" type="java.lang.String" not-null="false" length="2" />
+		<property name="requestDate" column="requestdate" type="java.lang.Long" not-null="true"/>
+		<property name="responseDate" column="responsedate" type="java.lang.Long" not-null="false"/>
+
+		<!-- COMON HBM FIELDS STARTS -->
+		<!--<property name="createDate" column="datecreate" type="java.lang.Long" not-null="true"/>
+		<many-to-one name="createBy" entity-name="extraExtraLightUserModel" column="fkcreateby" lazy="false" fetch="join" />
+		<property name="updateDate" column="dateupdate" type="java.lang.Long" not-null="false"/>
+		<many-to-one name="updateBy" entity-name="extraExtraLightUserModel" column="fkupdateby" lazy="false" fetch="join" />-->
+		<!-- COMON HBM FIELDS ENDS -->
+	</class>
+</hibernate-mapping>

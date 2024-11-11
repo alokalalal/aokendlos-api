@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.barcodestructure.model">
+	<class entity-name="barcodeStructureModel" name="BarcodeStructureModel" table="tblbarcodestructure" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<many-to-one name="barcodeTemplateModel" entity-name="barcodeTemplateModel" column="fkbarcodetemplateid" lazy="false" fetch="join" not-null="true"/>	
+		<property name="fieldName" column="txtfieldname" type="java.lang.String" not-null="true"/>			
+		<property name="barcodeType" column="enumbarcodetype" type="java.lang.Integer" access="field" not-null="true" />
+		<property name="length" column="numberlength" type="java.lang.Long" not-null="true"/>
+		<property name="value" column="txtvalue" type="java.lang.String" not-null="false"/>
+		<property name="dynamicValue" column="enumdynamicvalue" type="java.lang.Integer" access="field" not-null="false" />
+		<property name="index" column="txtindex" type="java.lang.String" not-null="false"/>
+		<property name="endValue" column="txtendvalue" type="java.lang.String" not-null="false"/>
+		</class>
+</hibernate-mapping>

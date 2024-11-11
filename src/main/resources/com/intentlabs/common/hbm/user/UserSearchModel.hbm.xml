@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.common.user.model">
+	<class entity-name="userSearchModel" name="UserSearchModel" table="tblusersearch" dynamic-update="true" dynamic-insert="true">
+		<id name="userId" column="fkuserId" type="java.lang.Long">
+			<generator class="assigned" />
+		</id>
+		<property name="searchParam" column="txtsearchparam" type="java.lang.String" not-null="true"/>
+	</class>
+	
+	<sql-query name="insertUserSearchParam">
+    	<query-param name="id" type="java.lang.Long"/>
+        <![CDATA[
+        	insert into tblusersearch values (:id, (select to_tsvector('simple',coalesce(tu.txtname,'')  
+                              || ' ' || coalesce(tu.txtemail,'') || ' ' || coalesce(tu.txtmobile,''))
+                              from tbluser tu where tu.pkid = :id));
+        ]]>
+    </sql-query>
+    <sql-query name="updateUserSearchParam">
+    	<query-param name="id" type="java.lang.Long"/>
+        <![CDATA[
+        	update tblusersearch set txtsearchparam = (select to_tsvector('simple',coalesce(tu.txtname,'')  
+                              || ' ' || coalesce(tu.txtemail,'') || ' ' || coalesce(tu.txtmobile,''))
+                              from tbluser tu where tu.pkid = :id) where fkuserId = :id
+        ]]>
+    </sql-query>
+</hibernate-mapping>

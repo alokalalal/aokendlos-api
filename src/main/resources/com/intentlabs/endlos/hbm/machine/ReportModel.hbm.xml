@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.machine.model">
+	<class entity-name="reportModel" name="ReportModel" table="tblreport" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		
+		<!--<many-to-one name="machineModel" entity-name="machineModel" column="fkmachineid" lazy="false" fetch="join" not-null="false"/>-->
+		<!--<many-to-one name="locationModel" entity-name="locationModel" column="fklocationid" lazy="false" fetch="join" not-null="false"/>-->
+		<many-to-one name="machineModel" entity-name="extraSmallLightMachineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>
+		<many-to-one name="locationModel" entity-name="extraLightLocationModel" column="fklocationid" lazy="false" fetch="join" not-null="true"/>
+		<property name="patBottleCount" column="patbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="bigPatBottleCount" column="bigpatbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="smallPatBottleCount" column="smallpatbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="aluBottleCount" column="alubottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="glassBottleCount" column="glassbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="bigGlassBottleCount" column="bigglassbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="smallGlassBottleCount" column="smallglassbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="totalBottleCount" column="totalbottlecount" type="java.lang.Long" not-null="false"/>
+		<property name="totalValue" column="totalvalue" type="java.math.BigDecimal" not-null="false"/>
+		<property name="createDate" column="createdate" type="java.lang.Long" not-null="false"/>
+		
+	</class>	
+</hibernate-mapping>

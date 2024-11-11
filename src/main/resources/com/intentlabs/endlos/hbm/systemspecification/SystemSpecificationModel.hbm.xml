@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.systemspecification.model">
+	<class entity-name="systemSpecificationModel" name="SystemSpecificationModel" table="tblsystemspecificationdetail" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="anydeskId" column="anydeskid" type="java.lang.String" not-null="true" length="100" />
+		<property name="anydeskPassword" column="txtanydeskpassword" type="java.lang.String" not-null="true" length="500" />
+		<property name="windowsActivationKey" column="txtwindowsactivationkey" type="java.lang.String" length="1000" />
+		<property name="windowsProductionKey" column="txtwindowsproductionkey" type="java.lang.String" length="1000" />
+		<property name="windowsPassword" column="txtwindowspassword" type="java.lang.String" length="500" />
+		<many-to-one name="machineModel" entity-name="machineModel" column="fkmachineid" lazy="false" fetch="join" cascade="save-update"/>
+		<property name="dateOfCreated" column="dateofcreated" type="java.lang.Long" not-null="true" />
+		<property name="dateOfUpdated" column="dateofupdated" type="java.lang.Long" not-null="true" />
+
+	</class>
+</hibernate-mapping>

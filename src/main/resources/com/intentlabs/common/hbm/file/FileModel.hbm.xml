@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.common.file.model">
+	<class entity-name="fileModel" name="FileModel" table="tblfile" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="txtname" type="java.lang.String" not-null="true" length="200" />
+		<property name="originalName" column="txtoriginalname" type="java.lang.String" not-null="false" length="200" />
+		<property name="fileId" column="txtfileid" type="java.lang.String" not-null="true" length="64" />
+		<property name="moduleId" column="fkmoduleid" type="java.lang.Long" not-null="true" access="field"/>
+		<property name="upload" column="dateupload" type="java.lang.Long" not-null="true"/>
+		<property name="publicfile" column="ispublic" type="boolean" not-null="true"/>
+		<property name="compressName" column="txtcompressname" type="java.lang.String" not-null="false" length="200" />
+		<property name="path" column="txtpath" type="java.lang.String" not-null="true" length="5000" />
+		<property name="compressPath" column="txtcompresspath" type="java.lang.String" not-null="false" length="5000" />
+	</class>
+	
+	<class entity-name="lightFileModel" name="FileModel" table="tblfile" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="txtname" type="java.lang.String" not-null="true" length="200" />
+		<property name="originalName" column="txtoriginalname" type="java.lang.String" not-null="false" length="200" />
+		<property name="compressName" column="txtcompressname" type="java.lang.String" not-null="false" length="200" />
+		<property name="fileId" column="txtfileid" type="java.lang.String" not-null="true" length="64" />
+		<property name="path" column="txtpath" type="java.lang.String" not-null="true" length="5000" />
+		<property name="compressPath" column="txtcompresspath" type="java.lang.String" not-null="false" length="5000" />
+	</class>
+</hibernate-mapping>

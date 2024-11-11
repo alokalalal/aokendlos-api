@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.logistic.model">
+	<class entity-name="dailyPickupLogModel" name="DailyPickupLogModel" table="tbldailypickuplogs" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<many-to-one name="pickupRouteModel" entity-name="pickupRouteModel" column="fkpickuprouteid" lazy="false" fetch="join" />
+		<property name="generatePlanDate" column="generateplandate" type="java.lang.Long" not-null="true" />
+		<property name="numberOfPatBottle" column="numberofpatbottle" type="java.lang.Long" not-null="true" />
+		<property name="numberOfAluBottle" column="numberofalubottle" type="java.lang.Long" not-null="true" />
+		<property name="numberOfGlassBottle" column="numberofglassbottle" type="java.lang.Long" not-null="true" />
+		<property name="totalNumberOfPickup" column="totalnumberofpickup" type="java.lang.Long" not-null="true" />
+		<property name="totalWeight" column="totalweight" type="java.math.BigDecimal" not-null="false"/>
+
+	</class>
+</hibernate-mapping>

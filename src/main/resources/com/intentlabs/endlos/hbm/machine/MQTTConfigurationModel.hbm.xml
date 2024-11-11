@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.intentlabs.endlos.machine.model">
+	<class entity-name="mqttConfigurationModel" name="MQTTConfigurationModel" table="tblmqttconfiguration" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<many-to-one name="machineModel" entity-name="machineModel" column="fkmachineid" lazy="false" fetch="join" not-null="true"/>	
+		<property name="mqttBridgeHostName" column="mqttbridgehostname" type="java.lang.String" not-null="true" />
+		<property name="mqttBridgePort" column="mqttbridgeport" type="java.lang.String" not-null="true" />
+		<property name="projectId" column="projectid" type="java.lang.String" not-null="true" />
+		<property name="cloudRegion" column="cloudregion" type="java.lang.String" not-null="true" />
+		<property name="registryId" column="registryid" type="java.lang.String" not-null="true" />
+		<property name="gatewayId" column="gatewayid" type="java.lang.String" not-null="true" />
+		<property name="publicKeyFilePath" column="publickeyfilepath" type="java.lang.String" not-null="false" />
+		<property name="privateKeyFilePath" column="privatekeyfilepath" type="java.lang.String" not-null="false" />
+		<property name="derKeyFilePath" column="derkeyfilepath" type="java.lang.String" not-null="false" />
+		<property name="algorithm" column="algorithm" type="java.lang.String" not-null="true" />
+		<property name="deviceId" column="deviceid" type="java.lang.String" not-null="true" />
+		<property name="messageType" column="messagetype" type="java.lang.String" not-null="true" />
+
+		<property name="createDate" column="createdate" type="java.lang.Long" not-null="true" />
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.common.setting.model">
+	<class entity-name="systemSettingModel" name="SystemSettingModel" table="tblsystemsetting" batch-size="50" dynamic-update="true" dynamic-insert="true">
+		<id name="key" column="txtkey" type="java.lang.String" length="100">
+			<generator class="assigned"></generator>
+		</id>
+		<property name="value" column="txtvalue" type="java.lang.String" not-null="true" length="500" />
+		<property name="dataType" column="enumdatatype" type="java.lang.Integer" not-null="true" access="field"/>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.intentlabs.endlos.barcodestructure.model">
+	<class entity-name="barcodeTemplateModel" name="BarcodeTemplateModel" table="tblbarcodetemplate" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>		
+		<property name="name" column="txtname" type="java.lang.String" not-null="true"/>
+		<property name="totalLength" column="totallength" type="java.lang.Long" not-null="true"/>
+		<property name="currentLength" column="currentlength" type="java.lang.Long" not-null="true"/>
+		<property name="completed" column="iscompleted" type="boolean" not-null="true"/>	
+		<property name="createDate" column="datecreate" type="java.lang.Long" not-null="true"/>
+		<many-to-one name="createBy" entity-name="extraExtraLightUserModel" column="fkcreateby" lazy="false" fetch="join" />	
+	</class>
+
+	<class entity-name="superLightBarcodeTemplateModel" name="BarcodeTemplateModel" table="tblbarcodetemplate" dynamic-update="true" dynamic-insert="true">
+		<id name="id" column="pkid" type="java.lang.Long">
+			<generator class="identity" />
+		</id>
+		<property name="name" column="txtname" type="java.lang.String" not-null="true"/>
+	</class>
+</hibernate-mapping>

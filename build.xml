@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+
+<project name="alumnly-api" default="DEPLOY-PROJECT" basedir=".">
+	<property name="app.name" value="${ant.project.name}" />
+	<property name="env" environment="env" value="" />
+	<property name="project.dir" value="." />
+	<property name="tomcat.dir" value="/home/hemil/tomcat/apache-tomcat-9.0.54/webapps" />
+	<target name="BUILD-PROJECT">
+		<exec dir="." executable="sh">
+			<arg line="-c 'mvn clean install'" />
+		</exec>
+	</target>
+	<target name="DEPLOY-PROJECT" depends="BUILD-PROJECT">
+		<delete file="${tomcat.dir}\${app.name}.war" />
+		<delete dir="${tomcat.dir}\${app.name}" />
+		<copy todir="${tomcat.dir}">
+			<fileset dir="${project.dir}/target" includes="*.war" />
+		</copy>
+	</target>
+</project>
+
